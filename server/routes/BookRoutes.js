@@ -1,36 +1,16 @@
 import express from 'express'
-import Book from '../Models/BookModels.js'
+import * as BookController from '../Controllers/BookController.js'
 
 const router = express.Router()
 
-router.get('/', async(req, res) => {
-    const result = await Book.find();
-    await res.status(200).json(result)
-})
+router.get('/', BookController.fetchAllBooks);
 
-router.post('/', async(req, res) => {
-    const books = req.body;
-    await Book.create(books);
-    await res.status(201).redirect('/')
-})
+router.post('/', BookController.postBook)
 
-router.get('/:id', async(req, res) => {
-    const id = req.params.id;
-    const result = await Book.findById(id)
-    await res.status(200).json(result)
-})
+router.get('/:id', BookController.getSingleBook)
 
-router.patch('/:id', async(req, res) => {
-    const id = req.params.id;
-    const updatedBook = req.body;
-    await Book.findByIdAndUpdate(id, updatedBook, { new: true});
-    await res.status(201).json({ redirect: '/books' })
-})
+router.patch('/:id', BookController.updateBook)
 
-router.delete('/:id', async(req, res) => {
-    const id = req.params.id;
-    await Book.findByIdAndDelete(id)
-    await res.status(200).json({ redirect: '/' })
-})
+router.delete('/:id', BookController.deleteBook)
 
 export default router

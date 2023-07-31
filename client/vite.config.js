@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // base: '/book-vite/',
   plugins: [
     vue(),
   ],
@@ -19,7 +20,6 @@ export default defineConfig({
         targer: "http://localhost:5001",
         changeOrigin: true,
         secure: false,
-        ws: true,
       }
     }
   }
