@@ -1,7 +1,8 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
-import router from './routes/BookRoutes.js'
+import BookRouter from './routes/BookRoutes.js'
+import AccountRouter from './routes/AccountRoutes.js'
 
 dotenv.config()
 
@@ -24,4 +25,6 @@ app.get('/', async(req, res) => {
     await res.redirect('/books')
 })
 
-app.use('/books', router)
+app.use('/books', BookRouter)
+
+app.use('/accounts', AccountRouter)

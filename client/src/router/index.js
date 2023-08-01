@@ -7,7 +7,19 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      children: [
+        {
+          path: 'accounts/login',
+          name: 'login',
+          component: () => import('../views/LoginView.vue')
+        },
+        {
+          path: 'accounts/sign-up',
+          name: 'signup',
+          component: () => import('../views/SignUpView.vue')
+        }
+      ]
     },
     {
       path: '/post',
@@ -18,14 +30,10 @@ const router = createRouter({
       component: () => import('../views/PostBookView.vue')
     },
     {
-      path: '/login',
-      name: 'login',
-      component: () => import('../views/LoginView.vue')
-    },
-    {
-      path: '/signup',
-      name: 'signup',
-      component: () => import('../views/SignUpView.vue')
+      path: '/book/:id',
+      name: 'SingleBook',
+      component: () => import('../views/SingleBookView.vue'),
+      props: true
     }
   ]
 })

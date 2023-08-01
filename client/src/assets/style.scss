@@ -1,3 +1,35 @@
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 $bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
 @import "../../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
+
+section.books {
+    .row {
+        .col {
+            .card {
+                min-height: 275px !important;
+                img {
+                    transform: scale(1.1);
+                    transition: all 0.3s linear;
+                }
+                .card-body {
+                    transform: translateY(200px);
+                    transition: all 0.5s linear;
+                }
+                &:hover {
+                    img {
+                        transform: scale(1);
+                    }
+                    cursor: pointer;
+                    .card-body {
+                        transform: translateY(0px);
+                    }
+                }
+            }
+        }
+    }
+}
+section {
+    .pages-wrapper {
+        min-width: 400px !important;
+    }
+}

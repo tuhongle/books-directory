@@ -2,7 +2,7 @@ import Book from '../Models/BookModels.js'
 
 
 export const fetchAllBooks = async(req, res) => {
-    const result = await Book.find();
+    const result = await Book.find().limit(50);
     await res.status(200).json(result)
 }
 
